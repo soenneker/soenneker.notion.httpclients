@@ -1,20 +1,19 @@
 using Soenneker.Notion.HttpClients.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Notion.HttpClients.Tests;
 
-[Collection("Collection")]
-public sealed class NotionOpenApiHttpClientTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public sealed class NotionOpenApiHttpClientTests : HostedUnitTest
 {
     private readonly INotionOpenApiHttpClient _httpclient;
 
-    public NotionOpenApiHttpClientTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public NotionOpenApiHttpClientTests(Host host) : base(host)
     {
         _httpclient = Resolve<INotionOpenApiHttpClient>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
