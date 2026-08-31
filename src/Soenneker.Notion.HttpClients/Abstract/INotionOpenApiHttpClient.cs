@@ -6,14 +6,14 @@ using System.Threading;
 namespace Soenneker.Notion.HttpClients.Abstract;
 
 /// <summary>
-/// A .NET thread-safe singleton HttpClient for 
+/// Provides a cached HTTP client with Notion API authentication and version headers.
 /// </summary>
-public interface INotionOpenApiHttpClient: IDisposable, IAsyncDisposable
+public interface INotionOpenApiHttpClient : IDisposable, IAsyncDisposable
 {
     /// <summary>
-    /// Gets the value.
+    /// Gets the configured Notion HTTP client.
     /// </summary>
     /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task containing the result of the operation.</returns>
+    /// <returns>The cached client.</returns>
     ValueTask<HttpClient> Get(CancellationToken cancellationToken = default);
 }
