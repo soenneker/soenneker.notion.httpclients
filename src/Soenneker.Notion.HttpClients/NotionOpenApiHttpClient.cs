@@ -11,6 +11,7 @@ using Soenneker.Utils.HttpClientCache.Abstract;
 
 namespace Soenneker.Notion.HttpClients;
 
+/// <inheritdoc cref="INotionOpenApiHttpClient" />
 public sealed class NotionOpenApiHttpClient : INotionOpenApiHttpClient
 {
     private readonly IHttpClientCache _httpClientCache;
