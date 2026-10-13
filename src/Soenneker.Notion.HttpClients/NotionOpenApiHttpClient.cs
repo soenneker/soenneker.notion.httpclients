@@ -30,7 +30,7 @@ public sealed class NotionOpenApiHttpClient : INotionOpenApiHttpClient
     {
         return _httpClientCache.Get(_clientId, (config: _config, baseUrl: _config["Notion:ClientBaseUrl"] ?? _prodBaseUrl), static state =>
         {
-            var apiKey = state.config.GetValueStrict<string>("Notion:ApiKey");
+            var apiKey = state.config.GetStringStrict("Notion:ApiKey");
             string authHeaderName = state.config["Notion:AuthHeaderName"] ?? "Authorization";
             string authHeaderValueTemplate = state.config["Notion:AuthHeaderValueTemplate"] ?? "Bearer {token}";
             string authHeaderValue = authHeaderValueTemplate.Replace("{token}", apiKey, StringComparison.Ordinal);
